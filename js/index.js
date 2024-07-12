@@ -1,40 +1,3 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const form = document.getElementById('github-form');
-    const submit = document.querySelector('input')[1];
-
-    submit.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the form from submitting in the traditional way
-        const username = document.getElementById('search').value;
-        if (username) {
-            getUsers(username);
-        } else {
-            console.log('Username is empty');
-        }
-    });
-
-    
-});
-
-const getUsers = (username) => {
-    fetch(`https://api.github.com/search/users?q=${username}`)
-    .then(res => res.json())
-    .then(data => {
-        let input = document.getElementById('search');
-        const query = input.value;
-        const container = document.getElementById('github-container');
-        const list = document.getElementById('user-list');
-        const user = document.createElement('li');
-        user.textContent = query;
-        list.appendChild(user);
-        container.appendChild(list)
-    });
-};
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('github-form');
     const searchInput = document.getElementById('search');
@@ -95,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   
     const displayRepos = repos => {
-      reposList.innerHTML = ''; // Clear previous results
+      reposList.innerHTML = '';     
       repos.forEach(repo => {
         const li = document.createElement('li');
         const repoName = document.createElement('p');
